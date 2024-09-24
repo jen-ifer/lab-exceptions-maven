@@ -94,8 +94,14 @@ public class Quadratic {
    * @return the smaller of the two roots (or the only root, if there
    *   is only one).
    */
-  public double smallerRoot() {
-    return 0; // STUB
+  public double smallerRoot() throws Exception{
+    if (a == 0) {
+      throw new Exception("Cannot compute quadratic roots of linear functions.");
+    } // if (a == 0)
+    if (Math.sqrt(Math.pow(b, 2) - (4 * a * c)) < 0) {
+      throw new Exception("Non-real root.");
+    }
+    return (((0 - b) - Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a));   // STUB
   } // smallerRoot
 
   /**
