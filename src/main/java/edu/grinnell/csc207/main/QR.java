@@ -1,8 +1,10 @@
 package edu.grinnell.csc207.main;
 
+import edu.grinnell.csc207.util.IOUtils;
 import edu.grinnell.csc207.util.Quadratic;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
@@ -23,13 +25,28 @@ public class QR {
    * @throws Exception
    *   If something goes wrong with the I/O or elsewhere.
    */
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
     PrintWriter pen = new PrintWriter(System.out, true);
     BufferedReader eyes = new BufferedReader(new InputStreamReader(System.in));
+    int a = IOUtils.readInt(pen, eyes, "Please enter an integer: ");
+    int b = IOUtils.readInt(pen, eyes, "Please enter an integer: ");
+    int c = IOUtils.readInt(pen, eyes, "Please enter an integer: ");
 
-    // ...
+    Quadratic temp = new Quadratic(a, b, c);
+    try {
+      pen.println(temp.smallerRoot());
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      pen.printf("Sorry, I could not compute a root \n");
+    }
+ 
 
-    eyes.close();
+    try {
+      eyes.close();
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     pen.close();
   } // main(String[])
 
